@@ -6,7 +6,7 @@ export default addemployee.post('/', async (req, res) => {
     try {
  
         if (!req.body || await checkemployee(req.body.mobile)) {
-            return res.send({
+            return res.status(400).json({
                 status: "error",
                 message: "Value is missing or employee already exists."
             });
@@ -15,13 +15,13 @@ export default addemployee.post('/', async (req, res) => {
         const ans = await addemployeeDB(req.body);
         console.log("ans ->", ans);
 
-        res.send({
+        res.status(200).json({
             status: "ok",
             message: ans
         });
 
     } catch (err) {
-        res.send({
+        res.status(500).json({
             status: "error",
             message: "Error while inserting into DB: " + err
         });

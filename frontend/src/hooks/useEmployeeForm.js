@@ -29,6 +29,7 @@ export default function useEmployeeForm() {
                 const data = await fetchapi({ method: "POST", body: { mobile: newData.mobile, newData: newData }, route: "/updateEmploye" });
                 if (data?.status == "error") {
                     setError(res?.message)
+                    // setFormData(newData)
                 }
                 setbtntext("Add")
             }
@@ -40,23 +41,34 @@ export default function useEmployeeForm() {
                 let res = await fetchapi({ method: "POST", body: newData, route: "/addemployee" })
                 if (res?.status == "error") {
                     setError(res?.message)
+                    setFormData(newData)
                 }
+                setFormData({
+                    name: "",
+                    mobile: "",
+                    dob: "",
+                    joiningDate: "",
+                    address: "",
+                    pincode: ""
+                });
             }
         }
         else {
             setError(res)
         }
-        setFormData({
-            name: "",
-            mobile: "",
-            dob: "",
-            joiningDate: "",
-            address: "",
-            pincode: ""
-        });
+
         refreshTable(state, setState)
     };
     useEffect(() => {
-    }, [formData, setFormData, error])
+        const sortedData = [...state.table_data].sort(
+            (a, b) => new Date(b.joiningDate) - new Date(a.joiningDate)
+        );
+        // console.log("sorted date=> ", sortedData)
+        setState((pre) => ({
+            ...pre,
+            table_data: sortedData
+        }));
+
+    }, [formData, setFormData, error,state?.table_data?.length])
     return { state, setState, employees, setEmployees, count, setcount, formData, setFormData, error, setError, handleChange, handleSubmit, btntext, setbtntext }
 }
