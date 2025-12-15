@@ -1,0 +1,89 @@
+.emp-table {
+  width: 50vw;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #fff;
+  /* margin: 1rem; */
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.emp-table th {
+  background: #f2f2f2;
+  padding: 10px;
+  font-weight: 600;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.emp-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.no-data {
+  text-align: center;
+  padding: 15px;
+  color: #666;
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  cursor: pointer;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.edit-btn {
+  background-color: #131633;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #fc0800;
+  color: #fff;
+}
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-text {
+  color: black;
+  font-weight: 600;
+  font-size: 1.5rem;
+
+}
+button {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+button:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
